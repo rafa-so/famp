@@ -1,0 +1,14 @@
+version: "3"
+services:
+  famp-secao02:
+    container_name: "famp-secao02"
+    build: ./secao02
+    volumes:
+      - "./secao02/app:/code/app"
+    networks:
+      - mynetwork
+    ports:
+      - "80:8000"
+networks:
+  mynetwork:
+    driver: bridge
