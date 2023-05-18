@@ -2,6 +2,17 @@ from fastapi import FastAPI
 
 app = FastAPI()
 
-@app.get('/')
-async def raiz():
-    return { "msg": "FastAPI da seção 03" }
+cursos = {
+    1: {
+        "titulo": "Programação para Leigos",
+        "aulas": 112,
+        "horas": 58
+    },
+    2: {
+        "titulo": "Algorítmos e Lógica de Programação",
+        "aulas": 87,
+        "horas": 10
+    }
+}
+
+
