@@ -3,11 +3,25 @@ from fastapi import HTTPException
 from fastapi import status
 from fastapi import Response
 from fastapi import Path
-from typing import Optional
 from fastapi import Query
 from fastapi import Header
+from fastapi import Depends
+
+from typing import Optional
+from typing import Any
+
+from time import sleep
+
 
 from app.models import Curso
+
+def fake_db():
+    try:
+        print("Abrindo conexão com bando de dados...")
+        sleep(1)
+    finally:
+        print("Fechando conexão com o banco de dados...")
+        sleep(1)
 
 app = FastAPI()
 
@@ -25,7 +39,7 @@ cursos = {
 }
 
 @app.get('/cursos')
-async def get_cursos():
+async def get_cursos(db: Any = Depends(fake_db)):
     return cursos
 
 
