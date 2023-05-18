@@ -4,4 +4,4 @@ app = FastAPI()
 
 @app.get('/')
 async def raiz():
-    return { "msg": "FastAPI na geek University" }
+    return { "msg": "FastAPI da seção 03" }
