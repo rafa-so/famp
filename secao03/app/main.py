@@ -5,6 +5,7 @@ from fastapi import Response
 from fastapi import Path
 from typing import Optional
 from fastapi import Query
+from fastapi import Header
 
 from app.models import Curso
 
@@ -71,6 +72,8 @@ async def delete_curso(curso_id: int):
 @app.get('/calculadora')
 async def calcular(a: int = Query(default=None, gt=5),
                    b: int = Query(default=None, gt=10 ),
-                   c: Optional[int] = None):
+                   c: Optional[int] = None,
+                   x_geek: str = Header(default=None) ):
     soma = a + b + c
+    print(f"X-GEEK: {x_geek}")
     return { "resultado": soma }
