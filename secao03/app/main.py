@@ -15,4 +15,13 @@ cursos = {
     }
 }
 
+@app.get('/cursos')
+async def get_cursos():
+    return cursos
 
+
+@app.get('/cursos/{curso_id}')
+async def get_curso(curso_id: int):
+    curso = cursos[curso_id]
+    curso.update({ "id": curso_id })
+    return curso
