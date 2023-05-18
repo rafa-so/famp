@@ -9,6 +9,15 @@ services:
       - mynetwork
     ports:
       - "80:8000"
+  famp-secao03:
+    container_name: "famp-secao03"
+    build: ./secao03
+    volumes:
+      - "./secao03/app:/code/app"
+    networks:
+      - mynetwork
+    ports:
+      - "80:8000"
 networks:
   mynetwork:
     driver: bridge
