@@ -18,6 +18,15 @@ services:
       - mynetwork
     ports:
       - "80:8000"
+  famp-secao03_routes:
+    container_name: "famp-secao03_routes"
+    build: ./secao03_routes
+    volumes:
+      - "./secao03_routes/app:/code/app"
+    networks:
+      - mynetwork
+    ports:
+      - "80:8000"
 networks:
   mynetwork:
     driver: bridge
