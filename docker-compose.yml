@@ -20,7 +20,7 @@ services:
       - "80:8000"
   famp-secao03_routes:
     container_name: "famp-secao03_routes"
-    build: ./secao03_routes
+    build: ./secao03
     volumes:
       - "./secao03_routes/app:/code/app"
     networks:
