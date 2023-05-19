@@ -7,13 +7,12 @@ from fastapi import Query
 from fastapi import Header
 from fastapi import Depends
 
-from typing import Optional
-from typing import Any
+from typing import Optional, Any, List
 
 from time import sleep
 
-
 from app.models import Curso
+from app.models import cursos
 
 def fake_db():
     try:
@@ -23,22 +22,18 @@ def fake_db():
         print("Fechando conexão com o banco de dados...")
         sleep(1)
 
-app = FastAPI()
+app = FastAPI(
+    title='API de cursos da Geek University',
+    version='0.0.1',
+    description='Uma API para estudo do FastAPI'
+)
 
-cursos = {
-    1: {
-        "titulo": "Programação para Leigos",
-        "aulas": 112,
-        "horas": 58
-    },
-    2: {
-        "titulo": "Algorítmos e Lógica de Programação",
-        "aulas": 87,
-        "horas": 10
-    }
-}
 
-@app.get('/cursos')
+@app.get('/cursos',
+         description='Retorna tudos os cursos ou uma lista vazia',
+         summary='Retorna todos os cursos',
+         response_model=List[Curso],
+         response_description="Cursos encontrados com sucesso")
 async def get_cursos(db: Any = Depends(fake_db)):
     return cursos
 
