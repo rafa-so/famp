@@ -1,5 +1,2 @@
-from core.configs import settings
+from app.models.curso_model import CursoModel
 
-from sqlalchemy import Column, Integer, String
-
-class Curso():
